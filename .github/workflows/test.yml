@@ -1,0 +1,20 @@
+name: test
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: sealed gauntlets
+        run: node --experimental-strip-types --test tests/*.test.ts
+      - name: full system prove
+        run: node --experimental-strip-types scripts/prove.ts
