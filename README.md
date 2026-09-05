@@ -4,7 +4,7 @@
 
 Compute twin: *Bring any machine. Contribute bounded capacity. Earn reciprocal capacity.*
 
-Status: **FULL-SYSTEM-PROOF PASS_WITH_DISCLOSED_LIMITS** — see `spec/FULL-SYSTEM-PROOF.md`  
+Status: **Active OSS business beta** — FULL-SYSTEM-PROOF sealed (`PASS_WITH_DISCLOSED_LIMITS`) — see `spec/FULL-SYSTEM-PROOF.md`  
 Depends on: [Inverse Architecture 1.0](https://github.com/rbardyla-boop/brush-sky-marble-cloud/releases/tag/v1.0.0)  
 EPOCH: **HIVE-4 sealed** (LawMigrator EPOCH-lite in-repo) — see `spec/HIVE-4.md`  
 Compute Socket: **SOCKET-0..2 sealed** — see `spec/SOCKET-0.md`, `spec/SOCKET-1.md`, `spec/SOCKET-2.md`
