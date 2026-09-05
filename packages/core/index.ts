@@ -52,3 +52,8 @@ export type {
   MetabolismResult,
   MetabolismStep,
 } from "./inverseMetabolism.ts";
+export {
+  Cortex,
+  runInverseNoveltyGauntlet,
+} from "./inverseNovelty.ts";
+export type { PolicyProposal, NoveltyResult } from "./inverseNovelty.ts";

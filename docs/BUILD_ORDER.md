@@ -1,5 +1,5 @@
 # Build order
 
-Phase J **INVERSE-METABOLISM** sealed. Next: INVERSE-NOVELTY, EPOCH bridge, Compute Socket, rights, Inverse metabolism, public network.
+Phase K **INVERSE-NOVELTY** sealed. Next: FULL-SYSTEM-PROOF, EPOCH bridge, Compute Socket, rights, Inverse metabolism, public network.
 
 Every layer earns existence independently.
