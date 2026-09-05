@@ -27,6 +27,10 @@ export class Hive {
   private memory: MemoryRecord[] = [];
   private epoch: EpochId = 0;
   private evidenceSeq = 0;
+  private authority: { admins: WorkerId[]; ignoreVerification: boolean } = {
+    admins: [],
+    ignoreVerification: false,
+  };
 
   constructor(config: Partial<HiveConfig> = {}) {
     this.config = { ...DEFAULT, ...config };
@@ -252,6 +256,21 @@ export class Hive {
       memory: this.memory.map((m) => ({ ...m })),
       includesTranscript: false,
     };
+  }
+
+  /** Authority is law-owned; evidence bodies cannot grant it. */
+  getAuthority(): { admins: WorkerId[]; ignoreVerification: boolean } {
+    return {
+      admins: [...this.authority.admins],
+      ignoreVerification: this.authority.ignoreVerification,
+    };
+  }
+
+  /** Explicit law path only — never call from evidence ingestion. */
+  grantAdminByLaw(workerId: WorkerId): void {
+    if (!this.authority.admins.includes(workerId)) {
+      this.authority.admins.push(workerId);
+    }
   }
 
 }
