@@ -36,3 +36,19 @@ transcript required · self-declared PASS · unsupported memory writes · identi
 ## v0.1 scope
 
 Local adapters only. No public WAN. No tokens. No Compute Socket.
+## Seal (2026-09-05)
+
+**Result: PASS_WITH_DISCLOSED_LIMITS**
+
+Implementation: packages/core/ (in-process TypeScript).
+
+### Disclosed limits
+
+- in-process only
+- cooperative wall-clock leases
+- no Compute Socket or EPOCH yet
+- logical worker ids, not three hosted models
+
+### Re-entry
+
+RESUME HIVE-1 for replacement-without-continuity.

@@ -4,7 +4,7 @@
 
 Compute twin: *Bring any machine. Contribute bounded capacity. Earn reciprocal capacity.*
 
-Status: **Exploration — HIVE-0 in progress**  
+Status: **HIVE-0 PASS_WITH_DISCLOSED_LIMITS** — see `spec/HIVE-0.md`  
 Depends on: [Inverse Architecture 1.0](https://github.com/rbardyla-boop/brush-sky-marble-cloud/releases/tag/v1.0.0)  
 EPOCH: separate (law migration) — not in this repo yet  
 Compute Socket: Phase F — not started
@@ -23,7 +23,7 @@ Do not build the dream. Build the next falsifiable boundary.
 
 | Phase | Question |
 |---|---|
-| **HIVE-0** (now) | Can opaque heterogeneous workers submit independently verifiable evidence without shared transcripts? |
+| **HIVE-0** (sealed) | Can opaque heterogeneous workers submit independently verifiable evidence without shared transcripts? |
 | HIVE-1 | Replacement without conversation continuity |
 | HIVE-2 | Hostile memory stays non-authoritative |
 | SOCKET-0 | Five machines, leases, verify, reassign on death |
