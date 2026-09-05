@@ -35,6 +35,13 @@ Do not build the dream. Build the next falsifiable boundary.
 | **INVERSE-NOVELTY** (sealed) | Unknown accelerator → cortex wake, no silent authority **PASS_WITH_DISCLOSED_LIMITS** |
 | **FULL-SYSTEM-PROOF** (sealed) | Combine hive + socket + metabolism end-to-end **PASS_WITH_DISCLOSED_LIMITS** |
 
+## Contribute
+
+Stranger path: clone, then `npm test`, then `npm run prove`. Details in [CONTRIBUTING.md](CONTRIBUTING.md).
+
+Release: [v0.1.0](https://github.com/rbardyla-boop/open-hive/releases/tag/v0.1.0) (beta harness; architecture sealed).
+
+See also: [BETA.md](BETA.md).
 ## License
 
 MIT
