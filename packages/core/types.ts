@@ -50,3 +50,16 @@ export interface VerifyResult {
   ok: boolean;
   reason: string;
 }
+
+/** Hive-only orientation for a replacement worker. No transcripts. */
+export interface HiveStateView {
+  epoch: EpochId;
+  known: Claim[];
+  failed: Claim[];
+  open: Claim[];
+  evidence: Evidence[];
+  claimable: ClaimId[];
+  memory: MemoryRecord[];
+  /** Always false — presence of this key documents the ban. */
+  includesTranscript: false;
+}

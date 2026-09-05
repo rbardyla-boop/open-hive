@@ -6,6 +6,7 @@ import type {
   EpochId,
   HiveConfig,
   Lease,
+  HiveStateView,
   MemoryRecord,
   VerifyResult,
   Worker,
@@ -216,4 +217,41 @@ export class Hive {
       this.leases.delete(claimId);
     }
   }
+  /**
+   * Hive-only orientation for a replacement worker.
+   * Never includes predecessor transcripts or private scratch.
+   */
+  buildStateView(): HiveStateView {
+    const known: Claim[] = [];
+    const failed: Claim[] = [];
+    const open: Claim[] = [];
+    for (const c of this.claims.values()) {
+      if (c.status === "PROVEN") known.push({ ...c, evidenceIds: [...c.evidenceIds] });
+      else if (c.status === "DISPROVEN") failed.push({ ...c, evidenceIds: [...c.evidenceIds] });
+      else if (c.status === "OPEN") open.push({ ...c, evidenceIds: [...c.evidenceIds] });
+    }
+    const evidence = [...this.evidence.values()].map((e) => ({ ...e }));
+    const now = this.config.now();
+    const claimable: ClaimId[] = [];
+    for (const c of open) {
+      const lease = this.leases.get(c.id);
+      if (!lease) {
+        claimable.push(c.id);
+        continue;
+      }
+      const holder = this.workers.get(lease.workerId);
+      if (lease.expiresAt <= now || !holder?.alive) claimable.push(c.id);
+    }
+    return {
+      epoch: this.epoch,
+      known,
+      failed,
+      open,
+      evidence,
+      claimable,
+      memory: this.memory.map((m) => ({ ...m })),
+      includesTranscript: false,
+    };
+  }
+
 }
