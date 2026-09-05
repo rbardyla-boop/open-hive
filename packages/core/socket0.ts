@@ -228,6 +228,32 @@ export class ComputeSocket {
     return this.balances.get(machineId) ?? 0;
   }
 
+  /**
+   * Reciprocal consume: debit accepted units from a machine's balance.
+   * Fails on insufficient balance (no overdraft).
+   */
+  consume(
+    machineId: MachineId,
+    units: number,
+  ): { ok: boolean; balance: number; reason: string } {
+    if (units <= 0) {
+      return {
+        ok: false,
+        balance: this.balances.get(machineId) ?? 0,
+        reason: "units must be positive",
+      };
+    }
+    const bal = this.balances.get(machineId) ?? 0;
+    if (bal < units) {
+      return { ok: false, balance: bal, reason: "insufficient balance" };
+    }
+    const next = bal - units;
+    this.balances.set(machineId, next);
+    return { ok: true, balance: next, reason: "consumed" };
+  }
+
+
+
   /** replay resistance */
   replay(receiptId: ReceiptId): { ok: boolean; reason: string } {
     if (this.settledReceipts.has(receiptId)) {
