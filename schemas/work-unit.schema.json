@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://open-hive.dev/schemas/work-unit.schema.json",
+  "title": "WorkUnit",
+  "type": "object",
+  "required": ["work_id", "description", "acceptance_contract", "law_root", "lease_duration"],
+  "properties": {
+    "work_id": { "type": "string" },
+    "repository_root": { "type": "string" },
+    "description": { "type": "string" },
+    "required_capabilities": { "type": "array", "items": { "type": "string" } },
+    "input_artifacts": { "type": "array", "items": { "type": "string" } },
+    "acceptance_contract": { "type": "string" },
+    "allowed_effects": { "type": "array", "items": { "type": "string" } },
+    "prohibited_effects": { "type": "array", "items": { "type": "string" } },
+    "law_root": { "type": "string" },
+    "lease_duration": { "type": "integer", "minimum": 1 },
+    "reward_class": { "type": "string" }
+  },
+  "additionalProperties": false
+}

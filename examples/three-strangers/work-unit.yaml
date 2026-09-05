@@ -1,0 +1,12 @@
+work_id: HIVE0-LOGIN-PERSISTENCE
+repository_root: "fixture://demo-login-bug"
+description: >
+  Evidence shares demo: rejected patch may still yield accepted counterexample + regression test.
+required_capabilities: ["code.patch", "test.write"]
+input_artifacts: []
+acceptance_contract: "deterministic_tests_green OR accepted_counterexample"
+allowed_effects: ["propose_patch", "propose_test", "submit_counterexample"]
+prohibited_effects: ["write_hive_memory", "grant_capability", "set_authority"]
+law_root: "LAW0-HIVE0"
+lease_duration: 3600
+reward_class: "evidence_share"
