@@ -37,11 +37,21 @@ Do not build the dream. Build the next falsifiable boundary.
 
 ## Contribute
 
-Stranger path: clone, then `npm test`, then `npm run prove`. Details in [CONTRIBUTING.md](CONTRIBUTING.md).
+**Don't tell me OPEN HIVE is interesting. Clone it and break one invariant.**
 
-Release: [v0.1.0](https://github.com/rbardyla-boop/open-hive/releases/tag/v0.1.0) (beta harness; architecture sealed).
+Stranger path: clone [v0.1.1](https://github.com/rbardyla-boop/open-hive/releases/tag/v0.1.1), then `npm test`, then `npm run prove` (Node >=22.6.0). Details in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-See also: [BETA.md](BETA.md).
+### Public Falsification Round (open)
+
+- [#1 OSS-STRANGER-2](https://github.com/rbardyla-boop/open-hive/issues/1) — reproduce prove on a different OS
+- [#2 ATTACK-1](https://github.com/rbardyla-boop/open-hive/issues/2) — break one sealed invariant with a reproducible failure
+- [#3 ADAPTER-1](https://github.com/rbardyla-boop/open-hive/issues/3) — wrap a foreign process; observed effects only
+
+Reward: research ledger + attribution. No bounty money.
+
+Specimen: [v0.1.0](https://github.com/rbardyla-boop/open-hive/releases/tag/v0.1.0) (sealed beta). Current: [v0.1.1](https://github.com/rbardyla-boop/open-hive/releases/tag/v0.1.1) (admission repair). See [BETA.md](BETA.md).
+
+Engineering HOLD: architecture sealed. Packaging/docs/test hardening only. WAN-0 and token economy not started.
 ## License
 
 MIT
