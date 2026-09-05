@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node --experimental-strip-types --test tests/**/*.test.ts",
+    "test": "node --experimental-strip-types --test tests",
     "test:hive0": "node --experimental-strip-types --test tests/hive0.test.ts",
     "test:hive1": "node --experimental-strip-types --test tests/hive1.test.ts",
     "test:hive2": "node --experimental-strip-types --test tests/hive2.test.ts",
@@ -15,6 +15,7 @@
     "test:socket2": "node --experimental-strip-types --test tests/socket2.test.ts",
     "test:inverse-metabolism": "node --experimental-strip-types --test tests/inverseMetabolism.test.ts",
     "test:inverse-novelty": "node --experimental-strip-types --test tests/inverseNovelty.test.ts",
-    "test:full-system": "node --experimental-strip-types --test tests/fullSystemProof.test.ts"
+    "test:full-system": "node --experimental-strip-types --test tests/fullSystemProof.test.ts",
+    "prove": "node --experimental-strip-types scripts/prove.ts"
   }
 }

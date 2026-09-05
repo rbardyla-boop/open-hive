@@ -1,0 +1,156 @@
+{
+  "pass": true,
+  "steps": [
+    {
+      "n": 1,
+      "name": "human_publishes_problem",
+      "ok": true
+    },
+    {
+      "n": 2,
+      "name": "hive_decomposes",
+      "ok": true
+    },
+    {
+      "n": 3,
+      "name": "agents_claim_tasks",
+      "ok": true
+    },
+    {
+      "n": 4,
+      "name": "agent_needs_remote",
+      "ok": true,
+      "detail": {
+        "deficit": {
+          "deficit": true,
+          "shortfall": 35
+        },
+        "requirement": {
+          "capabilities": [
+            "gpu"
+          ],
+          "units": 40,
+          "workloadId": "task-hash"
+        },
+        "cortexWakes": 0
+      }
+    },
+    {
+      "n": 5,
+      "name": "socket_acquires_capacity",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "machineId": "A",
+        "reason": "leased"
+      }
+    },
+    {
+      "n": 6,
+      "name": "remote_executes",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "receiptId": "rcpt-1",
+        "reason": "completed"
+      }
+    },
+    {
+      "n": 7,
+      "name": "verification_accepts",
+      "ok": true
+    },
+    {
+      "n": 8,
+      "name": "agent_submits_evidence",
+      "ok": true,
+      "detail": {
+        "leased": true,
+        "evidenceId": "ev-2"
+      }
+    },
+    {
+      "n": 9,
+      "name": "hive_memory_accepts",
+      "ok": true,
+      "detail": {
+        "memory": 2
+      }
+    },
+    {
+      "n": 10,
+      "name": "failure_reveals_unsafe_law",
+      "ok": true,
+      "detail": {
+        "delta": "ΔC: GPU hash without checksum bound is unsafe"
+      }
+    },
+    {
+      "n": 11,
+      "name": "epoch_derives_migration",
+      "ok": true
+    },
+    {
+      "n": 12,
+      "name": "affected_stop_revalidate",
+      "ok": true
+    },
+    {
+      "n": 13,
+      "name": "new_law_commits",
+      "ok": true
+    },
+    {
+      "n": 14,
+      "name": "stale_worker_returns_late",
+      "ok": true
+    },
+    {
+      "n": 15,
+      "name": "artifact_rejected_LAW_STALE",
+      "ok": true,
+      "detail": {
+        "replay": "LAW_STALE"
+      }
+    },
+    {
+      "n": 16,
+      "name": "replacement_joins",
+      "ok": true
+    },
+    {
+      "n": 17,
+      "name": "no_predecessor_transcript",
+      "ok": true
+    },
+    {
+      "n": 18,
+      "name": "work_continues_from_hive_state",
+      "ok": true,
+      "detail": {
+        "claimable": [
+          "post-migrate-work"
+        ]
+      }
+    }
+  ],
+  "cortexWakes": 0,
+  "details": {
+    "cortexWakes": 0,
+    "law": {
+      "id": "L1",
+      "version": 1,
+      "constraints": [
+        "baseline",
+        "checksum-bound-required"
+      ]
+    },
+    "providerBalance": 40
+  },
+  "limits": [
+    "in-process integration of HIVE/SOCKET/EPOCH/metabolism stand-ins",
+    "decomposition is explicit claim fan-out, not an LLM planner",
+    "does not claim AGI, Byzantine safety, or cloud replacement"
+  ],
+  "generatedAt": "2026-09-05T21:05:29.721Z"
+}
