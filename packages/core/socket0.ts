@@ -28,6 +28,9 @@ export interface Job {
   result?: unknown;
   receiptId?: ReceiptId;
   settledCredit?: number;
+  workUnits?: number;
+  /** Frozen at lease time — provider cannot rewrite. */
+  requiresFrozen?: boolean;
 }
 
 export interface Socket0Result {
@@ -137,6 +140,7 @@ export class ComputeSocket {
     job.status = "LEASED";
     job.leaseMachineId = match.id;
     job.leaseExpiresAt = now + this.config.leaseMs;
+    job.requiresFrozen = true;
     return { ok: true, machineId: match.id, reason: "leased" };
   }
 
@@ -176,6 +180,7 @@ export class ComputeSocket {
     this.receipts.add(receiptId);
     job.result = result;
     job.receiptId = receiptId;
+    job.workUnits = workUnits;
     job.status = "DONE";
     return { ok: true, receiptId, reason: "completed" };
   }
@@ -207,6 +212,10 @@ export class ComputeSocket {
       return { ok: false, reason: "duplicate settlement" };
     }
     if (!job.leaseMachineId) return { ok: false, reason: "no machine" };
+    const maxCredit = job.workUnits ?? 0;
+    if (credit > maxCredit) {
+      return { ok: false, reason: "excess credit" };
+    }
     this.settledReceipts.add(job.receiptId);
     const bal = this.balances.get(job.leaseMachineId) ?? 0;
     this.balances.set(job.leaseMachineId, bal + credit);
@@ -228,6 +237,29 @@ export class ComputeSocket {
       return { ok: false, reason: "unknown receipt" };
     }
     return { ok: false, reason: "replay rejected" };
+  }
+
+
+  /** Hostile provider attempt: rewrite job metadata after lease. Always rejected once frozen. */
+  mutateJobRequires(
+    jobId: JobId,
+    newRequires: Capability[],
+  ): { ok: boolean; reason: string } {
+    const job = this.jobs.get(jobId);
+    if (!job) return { ok: false, reason: "no job" };
+    if (job.requiresFrozen || job.status === "LEASED" || job.status === "DONE" || job.status === "SETTLED") {
+      return { ok: false, reason: "metadata immutable" };
+    }
+    job.requires = [...newRequires];
+    return { ok: true, reason: "updated" };
+  }
+
+  /** Ledger snapshot for consistency checks. */
+  ledgerSnapshot(): { balances: Record<string, number>; settled: string[] } {
+    return {
+      balances: Object.fromEntries(this.balances),
+      settled: [...this.settledReceipts],
+    };
   }
 
   killMachine(machineId: MachineId): { reassigned: JobId[] } {

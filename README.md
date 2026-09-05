@@ -4,7 +4,7 @@
 
 Compute twin: *Bring any machine. Contribute bounded capacity. Earn reciprocal capacity.*
 
-Status: **SOCKET-0 PASS_WITH_DISCLOSED_LIMITS** — see `spec/SOCKET-0.md` (HIVE-0..4 sealed)  
+Status: **SOCKET-1 PASS_WITH_DISCLOSED_LIMITS** — see `spec/SOCKET-1.md` (through SOCKET-0 sealed)  
 Depends on: [Inverse Architecture 1.0](https://github.com/rbardyla-boop/brush-sky-marble-cloud/releases/tag/v1.0.0)  
 EPOCH: separate (law migration) — not in this repo yet  
 Compute Socket: Phase F — not started
@@ -29,7 +29,8 @@ Do not build the dream. Build the next falsifiable boundary.
 | **HIVE-3** (sealed) | Contradiction edges without arbitrary pick **PASS_WITH_DISCLOSED_LIMITS** |
 | **HIVE-4** (sealed) | Law migration / EPOCH (ABORT / REVALIDATE / CONTINUE) **PASS_WITH_DISCLOSED_LIMITS** |
 | **SOCKET-0** (sealed) | Five machines: leases, verify, reassign on death **PASS_WITH_DISCLOSED_LIMITS** |
-| SOCKET-1 | Hostile compute provider (fake/replay/duplicate) |
+| **SOCKET-1** (sealed) | Hostile compute provider **PASS_WITH_DISCLOSED_LIMITS** |
+| SOCKET-2 | Reciprocal compute accounting lifecycle |
 | INVERSE bridge | External metabolism, cortex wakes = 0 for known compute |
 
 ## License

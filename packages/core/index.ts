@@ -38,3 +38,5 @@ export type {
   Job,
   Capability,
 } from "./socket0.ts";
+export { runSocket1Gauntlet } from "./socket1.ts";
+export type { Socket1Result } from "./socket1.ts";
