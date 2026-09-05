@@ -27,3 +27,14 @@ export type {
   MigrationProposal,
   ReplayVerdict,
 } from "./hive4.ts";
+export {
+  ComputeSocket,
+  seedFiveMachines,
+  runSocket0Gauntlet,
+} from "./socket0.ts";
+export type {
+  Socket0Result,
+  Machine,
+  Job,
+  Capability,
+} from "./socket0.ts";

@@ -9,6 +9,7 @@
     "test:hive1": "node --experimental-strip-types --test tests/hive1.test.ts",
     "test:hive2": "node --experimental-strip-types --test tests/hive2.test.ts",
     "test:hive3": "node --experimental-strip-types --test tests/hive3.test.ts",
-    "test:hive4": "node --experimental-strip-types --test tests/hive4.test.ts"
+    "test:hive4": "node --experimental-strip-types --test tests/hive4.test.ts",
+    "test:socket0": "node --experimental-strip-types --test tests/socket0.test.ts"
   }
 }
