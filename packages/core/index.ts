@@ -57,3 +57,5 @@ export {
   runInverseNoveltyGauntlet,
 } from "./inverseNovelty.ts";
 export type { PolicyProposal, NoveltyResult } from "./inverseNovelty.ts";
+export { runFullSystemProof } from "./fullSystemProof.ts";
+export type { FullSystemResult } from "./fullSystemProof.ts";
