@@ -19,3 +19,11 @@ export {
 export type { Hive2Result, AdversarialPayload } from "./hive2.ts";
 export { runHive3Gauntlet } from "./hive3.ts";
 export type { Hive3Result } from "./hive3.ts";
+export { runHive4Gauntlet, LawMigrator } from "./hive4.ts";
+export type {
+  Hive4Result,
+  LawRoot,
+  MigrationAction,
+  MigrationProposal,
+  ReplayVerdict,
+} from "./hive4.ts";
