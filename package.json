@@ -7,6 +7,7 @@
     "test": "node --experimental-strip-types --test tests/**/*.test.ts",
     "test:hive0": "node --experimental-strip-types --test tests/hive0.test.ts",
     "test:hive1": "node --experimental-strip-types --test tests/hive1.test.ts",
-    "test:hive2": "node --experimental-strip-types --test tests/hive2.test.ts"
+    "test:hive2": "node --experimental-strip-types --test tests/hive2.test.ts",
+    "test:hive3": "node --experimental-strip-types --test tests/hive3.test.ts"
   }
 }

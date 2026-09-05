@@ -6,6 +6,8 @@ import type {
   EpochId,
   HiveConfig,
   Lease,
+  ContradictionEdge,
+  ContradictionId,
   HiveStateView,
   MemoryRecord,
   VerifyResult,
@@ -27,6 +29,8 @@ export class Hive {
   private memory: MemoryRecord[] = [];
   private epoch: EpochId = 0;
   private evidenceSeq = 0;
+  private contradictions = new Map<ContradictionId, ContradictionEdge>();
+  private contradictionSeq = 0;
   private authority: { admins: WorkerId[]; ignoreVerification: boolean } = {
     admins: [],
     ignoreVerification: false,
@@ -271,6 +275,86 @@ export class Hive {
     if (!this.authority.admins.includes(workerId)) {
       this.authority.admins.push(workerId);
     }
+  }
+
+  declareContradiction(
+    claimA: ClaimId,
+    claimB: ClaimId,
+    evidenceIds: EvidenceId[] = [],
+    note?: string,
+  ): ContradictionEdge {
+    if (claimA === claimB) throw new Error("contradiction needs two claims");
+    const a = this.claims.get(claimA);
+    const b = this.claims.get(claimB);
+    if (!a || !b) throw new Error("both claims must exist");
+    // Do NOT arbitrarily close either claim.
+    const id = `cx-${++this.contradictionSeq}` as ContradictionId;
+    const edge: ContradictionEdge = {
+      id,
+      claimA,
+      claimB,
+      status: "OPEN",
+      evidenceIds: [...evidenceIds],
+      note,
+    };
+    this.contradictions.set(id, edge);
+    return edge;
+  }
+
+  listContradictions(): ContradictionEdge[] {
+    return [...this.contradictions.values()].map((e) => ({
+      ...e,
+      evidenceIds: [...e.evidenceIds],
+    }));
+  }
+
+  getContradiction(id: ContradictionId): ContradictionEdge | undefined {
+    const e = this.contradictions.get(id);
+    return e ? { ...e, evidenceIds: [...e.evidenceIds] } : undefined;
+  }
+
+  /**
+   * Narrow/resolve only via a verified third claim (e.g. ARM reproduction).
+   * Never pick claimA or claimB just because one was first.
+   */
+  narrowContradiction(
+    edgeId: ContradictionId,
+    verifiedNarrowingClaimId: ClaimId,
+    winnerClaimId: ClaimId,
+    loserClaimId: ClaimId,
+  ): { ok: boolean; reason: string } {
+    const edge = this.contradictions.get(edgeId);
+    if (!edge || edge.status === "RESOLVED") {
+      return { ok: false, reason: "edge missing or already resolved" };
+    }
+    const narrowing = this.claims.get(verifiedNarrowingClaimId);
+    if (!narrowing || narrowing.status !== "PROVEN") {
+      return { ok: false, reason: "narrowing claim must be PROVEN" };
+    }
+    const ids = new Set([edge.claimA, edge.claimB]);
+    if (!ids.has(winnerClaimId) || !ids.has(loserClaimId)) {
+      return { ok: false, reason: "winner/loser must be the contradictory pair" };
+    }
+    if (winnerClaimId === loserClaimId) {
+      return { ok: false, reason: "winner and loser must differ" };
+    }
+    const winner = this.claims.get(winnerClaimId);
+    const loser = this.claims.get(loserClaimId);
+    if (!winner || !loser) return { ok: false, reason: "claims missing" };
+
+    // Represent verification states: keep both claims; mark loser DISPROVEN, winner PROVEN if still open
+    if (loser.status === "OPEN") loser.status = "DISPROVEN";
+    if (winner.status === "OPEN") winner.status = "PROVEN";
+    edge.status = "NARROWED";
+    edge.resolvedByClaimId = verifiedNarrowingClaimId;
+    edge.note = (edge.note ? edge.note + "; " : "") +
+      `narrowed by ${verifiedNarrowingClaimId}`;
+    return { ok: true, reason: "contradiction narrowed by verified claim" };
+  }
+
+  /** Forbidden: arbitrary pick without verified narrowing. */
+  arbitraryPickContradiction(_edgeId: ContradictionId, _winner: ClaimId): never {
+    throw new Error("HIVE-3: cannot arbitrarily select one side of a contradiction");
   }
 
 }

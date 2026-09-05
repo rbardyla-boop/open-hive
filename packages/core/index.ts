@@ -17,3 +17,5 @@ export {
   HOSTILE_README,
 } from "./hive2.ts";
 export type { Hive2Result, AdversarialPayload } from "./hive2.ts";
+export { runHive3Gauntlet } from "./hive3.ts";
+export type { Hive3Result } from "./hive3.ts";

@@ -63,3 +63,17 @@ export interface HiveStateView {
   /** Always false — presence of this key documents the ban. */
   includesTranscript: false;
 }
+
+export type ContradictionId = string;
+export type ContradictionStatus = "OPEN" | "NARROWED" | "RESOLVED";
+
+export interface ContradictionEdge {
+  id: ContradictionId;
+  claimA: ClaimId;
+  claimB: ClaimId;
+  status: ContradictionStatus;
+  /** Supporting evidence ids cited when the edge was declared or narrowed. */
+  evidenceIds: EvidenceId[];
+  note?: string;
+  resolvedByClaimId?: ClaimId;
+}
