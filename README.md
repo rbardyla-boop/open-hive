@@ -4,7 +4,7 @@
 
 Compute twin: *Bring any machine. Contribute bounded capacity. Earn reciprocal capacity.*
 
-Status: **SOCKET-2 PASS_WITH_DISCLOSED_LIMITS** — see `spec/SOCKET-2.md` (through SOCKET-1 sealed)  
+Status: **INVERSE-METABOLISM PASS_WITH_DISCLOSED_LIMITS** — see `spec/INVERSE-METABOLISM.md`  
 Depends on: [Inverse Architecture 1.0](https://github.com/rbardyla-boop/brush-sky-marble-cloud/releases/tag/v1.0.0)  
 EPOCH: separate (law migration) — not in this repo yet  
 Compute Socket: Phase F — not started
@@ -31,7 +31,8 @@ Do not build the dream. Build the next falsifiable boundary.
 | **SOCKET-0** (sealed) | Five machines: leases, verify, reassign on death **PASS_WITH_DISCLOSED_LIMITS** |
 | **SOCKET-1** (sealed) | Hostile compute provider **PASS_WITH_DISCLOSED_LIMITS** |
 | **SOCKET-2** (sealed) | Reciprocal compute accounting lifecycle **PASS_WITH_DISCLOSED_LIMITS** |
-| INVERSE bridge | External metabolism, cortex wakes = 0 for known compute |
+| **INVERSE-METABOLISM** (sealed) | External metabolism, cortex wakes = 0 **PASS_WITH_DISCLOSED_LIMITS** |
+| INVERSE-NOVELTY | Unknown accelerator → cortex wake, no silent authority |
 
 ## License
 

@@ -12,6 +12,7 @@
     "test:hive4": "node --experimental-strip-types --test tests/hive4.test.ts",
     "test:socket0": "node --experimental-strip-types --test tests/socket0.test.ts",
     "test:socket1": "node --experimental-strip-types --test tests/socket1.test.ts",
-    "test:socket2": "node --experimental-strip-types --test tests/socket2.test.ts"
+    "test:socket2": "node --experimental-strip-types --test tests/socket2.test.ts",
+    "test:inverse-metabolism": "node --experimental-strip-types --test tests/inverseMetabolism.test.ts"
   }
 }
