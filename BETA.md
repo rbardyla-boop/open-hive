@@ -8,12 +8,12 @@ OPEN HIVE is Active OSS business / public beta. Architecture is sealed. Do not r
 - In-process stand-ins for sealed HIVE/SOCKET/INVERSE/FULL-SYSTEM-PROOF layers
 - Test runner covers all gauntlets under tests/*.test.ts
 - prove writes receipts/full-system-proof-latest.json
-- GitHub Actions on push/PR to master, Node 22 (.github/workflows/test.yml)
+- GitHub Actions on push/PR to master, Node >=22.6.0 (.github/workflows/test.yml)
 - No Bot wall
 
 ## How to test
 
-Node 22+ with --experimental-strip-types. No runtime deps.
+Node >=22.6.0 with --experimental-strip-types. No runtime deps.
 Run the package test script, then the prove script.
 prove writes receipts/full-system-proof-latest.json with pass true, steps.length 18, cortexWakes 0.
 

@@ -10,7 +10,7 @@ Thanks for landing here. This repo is a **sealed falsifiable prototype**, not an
 
 ## Quick start (stranger path)
 
-Requires **Node 22+**. No install step — no runtime deps.
+Requires **Node >=22.6.0**. No install step — no runtime deps.
 
 ```bash
 git clone https://github.com/rbardyla-boop/open-hive.git
@@ -24,7 +24,7 @@ Success looks like:
 - all gauntlets under `tests/*.test.ts` pass
 - `receipts/full-system-proof-latest.json` has `pass: true`, `steps.length === 18`, `cortexWakes === 0`
 
-CI runs the same checks on push/PR to `master` (Node 22) via `.github/workflows/test.yml`.
+CI runs the same checks on push/PR to `master` (Node >=22.6.0) via `.github/workflows/test.yml`.
 
 ## What good PRs look like
 
