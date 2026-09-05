@@ -16,6 +16,11 @@
     "test:inverse-metabolism": "node --experimental-strip-types --test tests/inverseMetabolism.test.ts",
     "test:inverse-novelty": "node --experimental-strip-types --test tests/inverseNovelty.test.ts",
     "test:full-system": "node --experimental-strip-types --test tests/fullSystemProof.test.ts",
-    "prove": "node --experimental-strip-types scripts/prove.ts"
+    "prove": "node --experimental-strip-types scripts/prove.ts",
+    "pretest": "node scripts/check-node.mjs",
+    "preprove": "node scripts/check-node.mjs"
+  },
+  "engines": {
+    "node": ">=22.6.0"
   }
 }

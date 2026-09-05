@@ -43,3 +43,7 @@ CI runs the same checks on push/PR to `master` (Node 22) via `.github/workflows/
 ## License
 
 MIT — see `LICENSE`.
+
+## Runtime admission
+
+Requires Node >=22.6.0. `npm test` / `npm run prove` run `scripts/check-node.mjs` first and exit with an explicit message on older Node (OSS-STRANGER-1).
