@@ -2,7 +2,7 @@ name: test
 
 on:
   push:
-    branches: [master]
+    branches: [master, research/collusion-0]
   pull_request:
     branches: [master]
 
