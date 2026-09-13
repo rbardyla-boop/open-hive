@@ -42,6 +42,18 @@ export { runSocket1Gauntlet } from "./socket1.ts";
 export type { Socket1Result } from "./socket1.ts";
 export { runSocket2Gauntlet, contribute } from "./socket2.ts";
 export type { Socket2Result } from "./socket2.ts";
+export { CollusionKernel, runCollusion0Gauntlet } from "./collusion0.ts";
+export type {
+  Sensitivity,
+  CapabilityAction,
+  Verdict,
+  CollusionAgent,
+  BoundCapability,
+  LabeledArtifact,
+  CollusionKernelConfig,
+  Decision,
+  Collusion0Result,
+} from "./collusion0.ts";
 export {
   WeakOrganism,
   runExternalMetabolism,
